@@ -4,7 +4,7 @@ import cross_icon from "../Assets/cart_cross_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
 
 const CartItems = () => {
-  const { products, cartItems, removeFromCart, getTotalCartAmount, incrementQuantity, decrementQuantity } = useContext(ShopContext);
+  const { products, cartItems, removeFromCart, getTotalCartAmount, incrementQuantity, decrementQuantity, clearCart } = useContext(ShopContext);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [formData, setFormData] = useState({ name: "", address: "", phone: "" });
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -18,6 +18,8 @@ const CartItems = () => {
     console.log("Form submitted:", formData);
     setTimeout(() => {
       setOrderPlaced(true);
+      // Clear the cart items after the order is placed
+      clearCart();
     }, 1500);
   };
 
