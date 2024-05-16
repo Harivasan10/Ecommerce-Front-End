@@ -44,22 +44,25 @@ const ShopCategory = (props) => {
 
   return (
     <div className="shopcategory">
-      <img src={props.banner} className="shopcategory-banner" alt="" />
-      <div className="shopcategory-indexSort">
-        <p><span>Showing 1 - 12</span> out of {allproducts.length} Products</p>
-        <div className="shopcategory-sort">
-          <label htmlFor="sort-select" className="sort-label">Sort by : </label>
-          <select id="sort-select" onChange={handleSortChange} value={sortCriteria} className="sort-select">
-            <option value="name">Name</option>
-            <option value="new_price">Price</option>
-          </select>
-          <button className={`sort-order-btn ${sortOrder}`} onClick={handleOrderChange}>
-            {sortOrder === "asc" ? "Ascending" : "Descending"}
-          </button>
-          <img src={dropdown_icon} alt="" className="dropdown-icon" />
+      <section className="shopcategory-header">
+        <img src={props.banner} className="shopcategory-banner" alt="" />
+        <div className="shopcategory-indexSort">
+          <p><span>Showing 1 - 12</span> out of {allproducts.length} Products</p>
+          <div className="shopcategory-sort">
+            <label htmlFor="sort-select" className="sort-label">Sort by:</label>
+            <select id="sort-select" onChange={handleSortChange} value={sortCriteria} className="sort-select">
+              <option value="name">Name</option>
+              <option value="new_price">Price</option>
+              <option value="color">Color</option>
+            </select>
+            <button className={`sort-order-btn ${sortOrder}`} onClick={handleOrderChange}>
+              {sortOrder === "asc" ? "Ascending" : "Descending"}
+            </button>
+            <img src={dropdown_icon} alt="" className="dropdown-icon" />
+          </div>
         </div>
-      </div>
-      <div className="shopcategory-products">
+      </section>
+      <section className="shopcategory-products">
         {allproducts
           .filter((item) => props.category === item.category)
           .map((item, i) => (
@@ -72,7 +75,7 @@ const ShopCategory = (props) => {
               old_price={item.old_price}
             />
           ))}
-      </div>
+      </section>
       <div className="shopcategory-loadmore">
         <Link to="/" style={{ textDecoration: 'none' }}>Explore More</Link>
       </div>
